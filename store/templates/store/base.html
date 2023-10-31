@@ -116,9 +116,9 @@
 
                     <li class="nav-item">
                 
-                        <a class="btn btn-alert navbar-btn text-white" type="button"  href=""> <i class="fa fa-home" aria-hidden="true"></i> &nbsp; Dashboard </a>
+                        <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'dashboard'%}"> <i class="fa fa-home" aria-hidden="true"></i> &nbsp; Dashboard </a>
 
-                    </li>
+                    </li> 
 
                     {% else %}
 
@@ -139,19 +139,18 @@
 
                         <a class="btn btn-alert navbar-btn text-white" type="button"  href=""> <i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp; Logout </a>
 
-                    </li>
+                    </li> 
 
 
                     {% else %}
 
                         <li class="nav-item">
 
-                            <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'my-login' %}"> Login </a>
+                            <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'my-login'%}"> Login </a>
 
                         </li>
 
-                {% endif %}
-
+                 {% endif %}
 
                 &nbsp; &nbsp; &nbsp;
 
