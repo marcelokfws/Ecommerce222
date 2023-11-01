@@ -1,7 +1,6 @@
 
 {% include "store/base.html" %}
 
-
 {% load static %}
 
 {% load mathfilters %}
@@ -13,7 +12,7 @@
     
     <div class="container">
       
-      <h1 class="h5"> Shopping cart </h1>
+      <h1 class="h5"> Carrinho de compras </h1>
 
 	    <hr>
 
@@ -49,18 +48,18 @@
               
               <div class="row p-3 ">
               
-                <div class="col-6 "> Product Value </div>
+                <div class="col-6 "> Valor do Produto </div>
                 <!--Usando o mathfilters-->
                 {% comment %} <div class="col-6 text-end"><span class="h6 fw-bold">${{ product.price |mul:item.qty }} </span></div> {% endcomment %}
-                <div class="col-6 text-end"><span class="h6 fw-bold">${{ product.price }} </span></div>
+                <div class="col-6 text-end"><span class="h6 fw-bold">R${{ product.price_ }} </span></div>
 
-                <div class="col-6"> Quantity </div>
+                <div class="col-6"> Quantidade </div>
               
                 <div class="col-6 text-end"><span class="h6 fw-bold">x {{item.qty}}</span></div><hr>
                 
                 <div class="col-6"> SubTotal</div>
               
-                <div class="col-6 text-end"><span class="h6 fw-bold">${{item.total}}</span></div>
+                <div class="col-6 text-end"><span class="h6 fw-bold">R${{item.total|cut:".00"|add:",00"}}</span></div>
             
               </div>
             
@@ -72,7 +71,7 @@
                 
                 <div class="col-12">
                   
-                  <label for="select">Qty</label>
+                  <label for="select">Qtd</label>
 
                   &nbsp; 
                   
@@ -98,7 +97,7 @@
 
                   <button type="button" data-index="{{product.id}}"
                     class="btn btn-primary btn-sm update-button">
-                    Update
+                    Atualizar
                   
                   </button>
                   
@@ -106,7 +105,7 @@
 
                   <button type="button" data-index="{{product.id}}"
                     class="btn btn-danger btn-sm delete-button">
-                    Delete
+                    Apagar
         
                   </button>
         
@@ -133,11 +132,11 @@
 
       <div class="col-12 text-end">
  
-        <div class="h6 fw-bold"> Total price: $ <div id="total" class="d-inline-flex"> {{cart.get_total}} </div></div>
+        <div class="h6 fw-bold"> Preço Total: R$ <div id="total" class="d-inline-flex"> {{cart.get_total|cut:".00"|add:",00"}} </div></div>
 
         <br>
 
-        <a href="" class="btn btn-primary my-2"> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Proceed to checkout </a>
+        <a href="{% url 'checkout'%}" class="btn btn-primary my-2"> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Ir para o checkout </a>
         
       </div>
 

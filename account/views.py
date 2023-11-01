@@ -1,4 +1,4 @@
-# from django.contrib import messages
+from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, auth
@@ -8,11 +8,11 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
-from .forms import CreateUserForm, LoginForm
-from .token import user_tokenizer_generate
+from payment.forms import ShippingForm
+from payment.models import OrderItem, ShippingAddress
 
-# from payment.forms import ShippingForm
-# from payment.models import Order, OrderItem, ShippingAddress
+from .forms import CreateUserForm, LoginForm, UpdateUserForm
+from .token import user_tokenizer_generate
 
 
 def register(request):
@@ -121,29 +121,29 @@ def my_login(request):
     return render(request, 'account/my-login.html', context=context)
 
 
-# # logout
+# logout
 
-# def user_logout(request):
+def user_logout(request):
 
-#     try:
+    try:
 
-#         for key in list(request.session.keys()):
+        for key in list(request.session.keys()):
 
-#             if key == 'session_key':
+            if key == 'session_key':
 
-#                 continue
+                continue
 
-#             else:
+            else:
 
-#                 del request.session[key]
+                del request.session[key]
 
-#     except KeyError:
+    except KeyError:
 
-#         pass
+        pass
 
-#     messages.success(request, "Logout success")
+    messages.success(request, "Sucesso ao Sair")
 
-#     return redirect("store")
+    return redirect("store")
 
 
 @login_required(login_url='my-login')
@@ -152,109 +152,100 @@ def dashboard(request):
     return render(request, 'account/dashboard.html')
 
 
-# @login_required(login_url='my-login')
-# def profile_management(request):
+@login_required(login_url='my-login')
+def profile_management(request):
 
-#     # Updating our user's username and email
+    # Updating our user's username and email
 
-#     user_form = UpdateUserForm(instance=request.user)
+    user_form = UpdateUserForm(instance=request.user)
 
-#     if request.method == 'POST':
+    if request.method == 'POST':
 
-#         user_form = UpdateUserForm(request.POST, instance=request.user)
+        user_form = UpdateUserForm(request.POST, instance=request.user)
 
-#         if user_form.is_valid():
+        if user_form.is_valid():
 
-#             user_form.save()
+            user_form.save()
 
-#             messages.info(request, "Update success!")
+            messages.info(request, "Sucesso ao Entrar!")
 
-#             return redirect('dashboard')
+            return redirect('dashboard')
 
+    context = {'user_form': user_form}
 
-#     context = {'user_form':user_form}
-
-#     return render(request, 'account/profile-management.html', context=context)
-
-
-# @login_required(login_url='my-login')
-# def delete_account(request):
-
-#     user = User.objects.get(id=request.user.id)
-
-#     if request.method == 'POST':
-
-#         user.delete()
+    return render(request, 'account/profile-management.html', context=context)
 
 
-#         messages.error(request, "Account deleted")
+@login_required(login_url='my-login')
+def delete_account(request):
+
+    user = User.objects.get(id=request.user.id)
+
+    if request.method == 'POST':
+
+        user.delete()
+
+        messages.error(request, "Conta Apagada")
+
+        return redirect('store')
+
+    return render(request, 'account/delete-account.html')
 
 
-#         return redirect('store')
+# Shipping view
+@login_required(login_url='my-login')
+def manage_shipping(request):
+
+    try:
+
+        # Account user with shipment information
+
+        shipping = ShippingAddress.objects.get(user=request.user.id)
+
+    except ShippingAddress.DoesNotExist:
+
+        # Account user with no shipment information
+
+        shipping = None
+
+    form = ShippingForm(instance=shipping)
+
+    if request.method == 'POST':
+
+        form = ShippingForm(request.POST, instance=shipping)
+
+        if form.is_valid():
+
+            # Assign the user FK on the object
+
+            shipping_user = form.save(commit=False)
+
+            # Adding the FK itself
+
+            shipping_user.user = request.user
+
+            shipping_user.save()
+
+            messages.info(request, "Update success!")
+
+            return redirect('dashboard')
+
+    context = {'form': form}
+
+    return render(request, 'account/manage-shipping.html', context=context)
 
 
-#     return render(request, 'account/delete-account.html')
+@login_required(login_url='my-login')
+def track_orders(request):
 
+    try:
 
-# # Shipping view
-# @login_required(login_url='my-login')
-# def manage_shipping(request):
+        orders = OrderItem.objects.filter(user=request.user)
 
-#     try:
+        context = {'orders': orders}
 
-#         # Account user with shipment information
+        return render(request, 'account/track-orders.html', context=context)
 
-#         shipping = ShippingAddress.objects.get(user=request.user.id)
+    except:
 
-
-#     except ShippingAddress.DoesNotExist:
-
-#         # Account user with no shipment information
-
-#         shipping = None
-
-
-#     form = ShippingForm(instance=shipping)
-
-
-#     if request.method == 'POST':
-
-#         form = ShippingForm(request.POST, instance=shipping)
-
-#         if form.is_valid():
-
-#             # Assign the user FK on the object
-
-#             shipping_user = form.save(commit=False)
-
-#             # Adding the FK itself
-
-#             shipping_user.user = request.user
-
-
-#             shipping_user.save()
-
-#             messages.info(request, "Update success!")
-
-#             return redirect('dashboard')
-
-
-#     context = {'form':form}
-
-#     return render(request, 'account/manage-shipping.html', context=context)
-
-
-# @login_required(login_url='my-login')
-# def track_orders(request):
-
-#     try:
-
-#         orders = OrderItem.objects.filter(user=request.user)
-
-#         context = {'orders':orders}
-
-#         return render(request, 'account/track-orders.html', context=context)
-
-#     except:
-
-#         return render(request, 'account/track-orders.html')
+        return render(request, 'account/track-orders.html')

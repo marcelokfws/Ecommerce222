@@ -5,10 +5,31 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+
+    # Admin url
+
     path('admin/', admin.site.urls),
+
+
+    # Store app
+
     path('', include('store.urls')),
+
+
+    # Cart app
+
     path('cart/', include('cart.urls')),
+
+
+    # Account app
+
     path('account/', include('account.urls')),
+
+
+    # Payment app
+
+    path('payment/', include('payment.urls')),
+
 
 ]
 

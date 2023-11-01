@@ -48,40 +48,40 @@ class LoginForm(AuthenticationForm):
     password = forms.CharField(widget=PasswordInput())
 
 
-# # Update form
+# Update form
 
-# class UpdateUserForm(forms.ModelForm):
+class UpdateUserForm(forms.ModelForm):
 
-#     password = None
+    password = None
 
-#     class Meta:
+    class Meta:
 
-#         model = User
+        model = User
 
-#         fields = ['username', 'email']
-#         exclude = ['password1', 'password1']
+        fields = ['username', 'email']
+        exclude = ['password1', 'password1']
 
-#     def __init__(self, *args, **kwargs):
-#         super(UpdateUserForm, self).__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super(UpdateUserForm, self).__init__(*args, **kwargs)
 
-#         # Mark email as required
+        # Mark email as required
 
-#         self.fields['email'].required = True
+        self.fields['email'].required = True
 
-#     # Email validation
+    # Email validation
 
-#     def clean_email(self):
+    def clean_email(self):
 
-#         email = self.cleaned_data.get("email")
+        email = self.cleaned_data.get("email")
 
-#         if User.objects.filter(email=email).exclude(pk=self.instance.pk).exists():
+        if User.objects.filter(email=email).exclude(pk=self.instance.pk).exists():
 
-#             raise forms.ValidationError('This email is invalid')
+            raise forms.ValidationError('This email is invalid')
 
-#         # len function updated ###
+        # len function updated ###
 
-#         if len(email) >= 350:
+        if len(email) >= 350:
 
-#             raise forms.ValidationError("Your email is too long")
+            raise forms.ValidationError("Your email is too long")
 
-#         return email
+        return email

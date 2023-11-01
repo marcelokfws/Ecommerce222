@@ -31,10 +31,14 @@ INSTALLED_APPS = [
     'store',
     'cart',
     'account',
+    'payment',
     'mathfilters',
     'crispy_forms',
+    # 'storeges',
 
 ]
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 
 # Crispy forms
 

@@ -31,7 +31,7 @@
 
         <div class="container bg-white shadow-md p-5 form-layout">
 
-            <h3> Login to your account </h3>
+            <h3> Entre em sua Conta </h3>
 
             <hr>
 
@@ -47,12 +47,12 @@
                 <br> 
 
 
-                {{form.password|as_crispy_field}}
+                {{form.password|as_crispy_field }}
 
                 <br> 
 
                 
-                <button type="submit" class="btn btn-primary navbar-btn text-white w-100 p-2"> <i class="fa fa-key" aria-hidden="true"></i> &nbsp; Login </button>
+                <button type="submit" class="btn btn-primary navbar-btn text-white w-100 p-2"> <i class="fa fa-key" aria-hidden="true"></i> &nbsp; Entrar </button>
 
                 <br> <br>
 
@@ -60,12 +60,12 @@
 
                 <div class="text-center">
 
-                    <a href="{% url 'register' %}"> Don't have an account? </a>
+                    <a href="{% url 'register' %}"> Não tem uma conta? </a>
 
 
                     <br> <br>
 
-                    <a href=""> Forgotten your password? </a>
+                    <a href="{% url 'reset_password' %}"> Esqueceu sua senha? </a>
 
 
                 </div>

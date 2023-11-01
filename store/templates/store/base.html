@@ -40,7 +40,7 @@
 
     </head>
 
-    <title> Edenthought </title>
+    <title> Mega Loja Store</title>
 
 
     <nav class="navbar navbar-expand-lg bg-primary justify-content-center">
@@ -48,7 +48,7 @@
 
         <a class="navbar-brand main-heading text-white" href="{% url 'store' %}"> 
                 
-        &nbsp; &nbsp; Edenthought 
+        &nbsp; &nbsp; Mega Loja Store 
         
         </a>
 
@@ -76,7 +76,7 @@
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     
-                        Categories
+                        Categorias
                     
                     </a>
                     
@@ -84,7 +84,7 @@
 
                         <li>
                             
-                            <a class="dropdown-item" href="{% url 'store' %}"> All </a>
+                            <a class="dropdown-item" href="{% url 'store' %}"> Todos </a>
                         
                         </li>
                         
@@ -116,7 +116,7 @@
 
                     <li class="nav-item">
                 
-                        <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'dashboard'%}"> <i class="fa fa-home" aria-hidden="true"></i> &nbsp; Dashboard </a>
+                        <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'dashboard'%}"> <i class="fa fa-home" aria-hidden="true"></i> &nbsp; Painel  </a>
 
                     </li> 
 
@@ -124,7 +124,7 @@
 
                     <li class="nav-item">
                 
-                        <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'register' %}"> Register </a>
+                        <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'register' %}"> Registre-se </a>
 
                     </li>
 
@@ -137,7 +137,7 @@
                     <li class="nav-item">
                         
 
-                        <a class="btn btn-alert navbar-btn text-white" type="button"  href=""> <i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp; Logout </a>
+                        <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'user-logout' %}"> <i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp; Sair </a>
 
                     </li> 
 
@@ -146,7 +146,7 @@
 
                         <li class="nav-item">
 
-                            <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'my-login'%}"> Login </a>
+                            <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'my-login'%}"> Entrar </a>
 
                         </li>
 

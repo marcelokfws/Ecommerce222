@@ -85,3 +85,5 @@ class Cart():
     def get_total(self):
 
         return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())  # noqa
+
+    

@@ -29,14 +29,14 @@
 
     <div class="container bg-white shadow-md p-5 form-layout">
 
-        <h4> <i class="fa fa-hand-paper-o" aria-hidden="true"></i> &nbsp; Welcome, {{user}} </h4>
+        <h4> <i class="fa fa-hand-paper-o" aria-hidden="true"></i> &nbsp; Bem-vindo, {{user}} </h4>
 
         <hr>
 
-        <p> This is your dashboard where you can perform any of the following: </p>
+        <p> Este é o seu painel onde você pode executar qualquer um dos seguintes: </p>
 
-        <li> Track your orders </li>
-        <li> Manage your account </li>
+        <li> Acompanhe seus pedidos </li>
+        <li> Gerenciar sua conta </li>
 
 
     </div>
@@ -45,13 +45,13 @@
 
     <div class="container bg-white shadow-md p-5 form-layout">
 
-        <h4> <i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp; Track your orders </h4>
+        <h4> <i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp; Acompanhe seus pedidos </h4>
 
         <hr>
 
-        <p> Track all of your orders here... </p>
+        <p> Acompanhe todos os seus pedidos aqui... </p>
 
-        <a class="btn btn-primary navbar-btn text-white" type="button"  href=""> My orders </a>
+        <a class="btn btn-primary navbar-btn text-white" type="button"  href="{% url 'track-orders' %}"> Meus pedidos </a>
 
     </div>
 
@@ -60,17 +60,17 @@
 
     <div class="container bg-white shadow-md p-5 form-layout">
 
-        <h4> <i class="fa fa-address-book" aria-hidden="true"></i> &nbsp; Manage your account </h4>
+        <h4> <i class="fa fa-address-book" aria-hidden="true"></i> &nbsp; Gerenciar sua conta </h4>
 
         <hr>
 
-        <p> Update or delete your account </p>
+        <p> Atualizar ou excluir sua conta </p>
 
 
         
         
 
-        <a class="btn btn-primary navbar-btn text-white" type="button"  href=""> Profile management </a>
+        <a class="btn btn-primary navbar-btn text-white" type="button"  href="{% url 'profile-management' %}"> Gerenciamento de perfis </a>
 
     </div>
 
@@ -79,14 +79,14 @@
 
     <div class="container bg-white shadow-md p-5 form-layout">
 
-        <h4> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Manage shipping </h4>
+        <h4> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Gerenciar envio </h4>
 
         <hr>
 
-        <p> Enter in a shipping address </p>
+        <p> Digite um endereço de entrega </p>
 
 
-        <a class="btn btn-primary navbar-btn text-white" type="button"  href=""> Manage shipping </a>
+        <a class="btn btn-primary navbar-btn text-white" type="button"  href="{% url 'manage-shipping' %}"> Gerenciar envio </a>
 
     </div>
 
