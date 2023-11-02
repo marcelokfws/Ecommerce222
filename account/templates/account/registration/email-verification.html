@@ -1,10 +1,8 @@
 {% autoescape off %}
 
-Hi,
-
-Thank you for registering on our website.
-
-Please be so kind as to verify your email by clicking the link below:
+Oi,
+Obrigado por se registrar em nosso site. Por favor, 
+seja gentil em verificar seu e-mail clicando no link abaixo:
 
 
 http://{{domain}}{% url 'email-verification' uidb64=uid token=token %}

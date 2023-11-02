@@ -6,7 +6,8 @@ from store.models import Product
 
 class ShippingAddress(models.Model):
 
-    full_name = models.CharField(max_length=300)
+    full_name = models.CharField(
+        max_length=300)
 
     email = models.EmailField(max_length=255)
 
@@ -18,7 +19,7 @@ class ShippingAddress(models.Model):
 
     # Optional
 
-    state = models.CharField(max_length=255, null=True, blank=True)
+    state = models.CharField(max_length=255)
 
     zipcode = models.CharField(max_length=255, null=True, blank=True)
 

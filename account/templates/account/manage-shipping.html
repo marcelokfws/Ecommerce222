@@ -21,6 +21,7 @@
 
 
     </style>
+    
 
     <body>
 
@@ -28,9 +29,9 @@
 
         <div class="container bg-white shadow-md p-5 form-layout">
 
-            <h3> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Manage shipping </h3>
+            <h3> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Gerenciar envio </h3>
 
-            <p> Please fill in your shipping address. </p>
+            <p> Por favor, preencha o seu endereço de entrega. </p>
 
             <hr>
 
@@ -40,47 +41,42 @@
 
                 {% csrf_token %}
 
-                {{form.full_name|as_crispy_field}}
+                <div class="form-outline form-white mb-4">
+                    <label  class="form-label" for="id_full_name">Usuário*</label>
+                    <input name="full_name" type="text"  class="form-control form-control-lg" />
+                </div>
 
+                <div class="form-outline form-white mb-4">
+                    <label  class="form-label" for="id_email">Email*</label>
+                    <input name="email" type="email"  class="form-control form-control-lg" />
+                </div>
 
-                <br> 
+                <div class="form-outline form-white mb-4">
+                    <label  class="form-label" for="id_address1">Endereço 1*</label>
+                    <input name="address1" type="text"  class="form-control form-control-lg" />
+                </div>
 
+                <div class="form-outline form-white mb-4">
+                    <label  class="form-label" for="id_address2">Endereço 2*</label>
+                    <input name="address2" type="text"  class="form-control form-control-lg" />
+                </div> 
 
-                {{form.email|as_crispy_field}}
+                <div class="form-outline form-white mb-4">
+                    <label  class="form-label" for="id_city">Cidade*</label>
+                    <input name="city" type="text"  class="form-control form-control-lg" />
+                </div>
 
-                <br> 
+                <div class="form-outline form-white mb-4">
+                    <label  class="form-label" for="id_state">Estado*</label>
+                    <input name="state" type="text"  class="form-control form-control-lg" />
+                </div>
 
-                {{form.address1|as_crispy_field}}
+                <div class="form-outline form-white mb-4">
+                    <label  class="form-label" for="id_zipcode">Cep</label>
+                    <input name="zipcode" type="text"  class="form-control form-control-lg" />
+                </div>
 
-                <br>
-
-
-                {{form.address2|as_crispy_field}}
-
-
-                <br>
-
-                {{form.city|as_crispy_field}}
-
-
-                <br>
-
-
-                {{form.state|as_crispy_field}}
-
-
-                <br>
-
-
-
-
-                {{form.zipcode|as_crispy_field}}
-
-
-                <br>
-
-
-                <button type="submit" class="btn btn-primary navbar-btn text-white w-100 p-2"> Update shipping address </button>
+                <button type="submit" class="btn btn-primary navbar-btn text-white w-100 p-2"> Atualizar endereço de entrega </button>
 
 
 
@@ -89,8 +85,6 @@
 
 
         </div>
-
-
 
     </body>
 

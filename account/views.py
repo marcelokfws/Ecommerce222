@@ -226,9 +226,11 @@ def manage_shipping(request):
 
             shipping_user.save()
 
-            messages.info(request, "Update success!")
-
+            messages.info(request, "Atualizado com sucesso!")
             return redirect('dashboard')
+        else:
+            messages.info(request, "Faltou algum dado!")
+            return redirect('manage-shipping')
 
     context = {'form': form}
 
