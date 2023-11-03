@@ -27,9 +27,9 @@
 
     <div class="container bg-white shadow-md p-5 form-layout ">
 
-        <h3> <i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp; My orders </h3>
+        <h3> <i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp; Meus pedidos </h3>
 
-        <p> View all of your orders. </p>
+        <p> Veja todos os seus pedidos. </p>
 
         <hr>
 
@@ -42,7 +42,7 @@
 
         {% for order in orders %}
 
-            <strong> <i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp;  Order ID # {{order.id}} </strong>
+            <strong> <i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp; <a class="text-decoration-none" href="{% url 'order-all' order.id %}">Pedido Nº {{order.id}} </a></strong>
             
             <br> <br>
 
@@ -50,11 +50,11 @@
 
             <br> <br>
 
-            Quantity x {{order.quantity}}
+            Quantidade x {{order.quantity}}
 
             <br> <br>
 
-            $ {{order.price}}
+            R$ {{order.price|cut:".00"|add:",00"}}
 
             <br> <br>
 

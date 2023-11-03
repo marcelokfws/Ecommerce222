@@ -11,6 +11,8 @@ class ShippingAddress(models.Model):
 
     email = models.EmailField(max_length=255)
 
+    phone = models.CharField(max_length=15)
+
     address1 = models.CharField(max_length=300)
 
     address2 = models.CharField(max_length=300)
@@ -44,6 +46,8 @@ class Order(models.Model):
     full_name = models.CharField(max_length=300)
 
     email = models.EmailField(max_length=255)
+
+    phone = models.CharField(max_length=15)
 
     shipping_address = models.TextField(max_length=10000)
 
@@ -81,3 +85,7 @@ class OrderItem(models.Model):
     def __str__(self):
 
         return 'Order Item - #' + str(self.id)
+
+    def soma(self):
+
+        return self.quantity * self.price

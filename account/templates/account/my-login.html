@@ -41,15 +41,16 @@
 
                 {% csrf_token %}
 
-                {{form.username|as_crispy_field}}
+                <div class="form-outline form-white mb-4">
+                    <label  class="form-label" for="id_username">Usuário*</label>
+                    <input name="username" type="text"  class="form-control form-control-lg" />
+                </div>
 
 
-                <br> 
-
-
-                {{form.password|as_crispy_field }}
-
-                <br> 
+                <div class="form-outline form-white mb-4">
+                    <label  class="form-label" for="id_password">Senha*</label>
+                    <input name="password" type="password"  class="form-control form-control-lg" />
+                </div>
 
                 
                 <button type="submit" class="btn btn-primary navbar-btn text-white w-100 p-2"> <i class="fa fa-key" aria-hidden="true"></i> &nbsp; Entrar </button>

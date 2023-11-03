@@ -54,9 +54,9 @@ def complete_order(request):
 
         # All-in-one shipping address
 
-        shipping_address = (address1, "\n", address2, "\n",
+        shipping_address = (address1 + "\n" + address2 + "\n" +
 
-                            city, "\n", state, "\n", zipcode
+                            city + "\n" + state + "\n" + zipcode
 
                             )
 
@@ -100,7 +100,7 @@ def complete_order(request):
 
         else:
 
-            order = Order.objects.create(full_name=name, email=email, shipping_address=shipping_address,
+            order = Order.objects.create(full_name=name, email=email, phone=phone, shipping_address=shipping_address,
 
                                          amount_paid=total_cost)
 

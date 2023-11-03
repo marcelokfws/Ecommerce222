@@ -1,0 +1,83 @@
+
+{% include "store/base.html" %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+    <style>
+
+
+        body{
+
+
+            background-color: gray;
+
+        }
+        
+
+
+
+    </style>
+
+    <br>
+
+    <div class="container bg-white shadow-md p-5 form-layout ">
+
+        <h3> <i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp; Meus pedidos </h3>
+
+        
+
+        <hr>
+
+
+    </div>
+
+    <br>
+
+    <div class="container bg-white shadow-md p-5 form-layout ">
+
+        {% for order in orders %}
+
+            <strong> <i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp; Detalhes do pedido Nº {{order.id}}.</strong>
+            
+            <br><br>
+            <img class="img-fluid mx-auto d-block" alt="Responsive image" height="40%" width="40%" src="{{ order.product.image.url }}">
+
+            Produto: {{order.product}} <br><br>
+            
+            Marca: {{order.product.brand}} <br><br>
+           
+            Quantidade x {{order.quantity}}
+
+            <br> <br>
+
+            Valor de Cada R$ {{order.price|cut:".00"|add:",00"}} <br><br>
+
+            Valor Total R$ {{order.soma|cut:".00"|add:",00"}} 
+           
+            {% for order2 in orders2 %}
+
+            <br> <br>
+            Nome: {{order2.full_name}}<br><br>
+            Email: {{order2.email}} <br><br>
+            Telefone: {{order2.phone}} <br><br>
+            Endereço: {{order2.address1}} <br><br>
+            Cidade: {{order2.city}} <br><br>
+            Estado: {{order2.state}} <br><br>
+            Cep: {{order2.zipcode}} <br><br>
+
+            <hr>
+            {% endfor %}
+
+        {% endfor %}
+        
+
+    </div>
+
+    <br>
+
+{% endblock %}

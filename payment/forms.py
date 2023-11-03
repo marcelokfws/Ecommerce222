@@ -10,6 +10,6 @@ class ShippingForm(forms.ModelForm):
 
         model = ShippingAddress
 
-        fields = ['full_name', 'email', 'address1',
+        fields = ['full_name', 'email', 'phone', 'address1',
                   'address2', 'city', 'state', 'zipcode']
         exclude = ['user',]

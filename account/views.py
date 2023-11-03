@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, auth
 from django.contrib.sites.shortcuts import get_current_site
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
@@ -244,10 +244,24 @@ def track_orders(request):
 
         orders = OrderItem.objects.filter(user=request.user)
 
-        context = {'orders': orders}
+        context = {'orders': orders, }
 
         return render(request, 'account/track-orders.html', context=context)
 
     except:
 
         return render(request, 'account/track-orders.html')
+
+
+@login_required(login_url='my-login')
+def order_all(request, pk):
+
+    orders = OrderItem.objects.filter(user=request.user, pk=pk)
+    orders2 = ShippingAddress.objects.filter(user=request.user)
+
+    # orders = get_object_or_404(OrderItem, pk=pk)
+    # orders2 = get_object_or_404(ShippingAddress, pk=pk)
+
+    context = {'orders': orders, 'orders2': orders2}
+
+    return render(request, 'account/order-all.html', context=context)

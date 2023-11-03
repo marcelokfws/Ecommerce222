@@ -1,3 +1,4 @@
+
 from django.contrib.auth import views as auth_views
 from django.urls import path
 
@@ -86,4 +87,7 @@ urlpatterns = [
 
     path('track-orders', views.track_orders, name='track-orders'),
 
+    path('order-all/<int:pk>/', views.order_all, name='order-all'),
+
 ]
+
